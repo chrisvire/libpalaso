@@ -176,6 +176,10 @@
     <None Include="..\lib\commonMono\NDesk.DBus.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Reference Include="MonoMac" >
+      <HintPath>..\lib\commonMono\MonoMac.dll</HintPath>
+    </Reference>
+
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />
@@ -355,6 +359,7 @@
     <Compile Include="UiBindings\ICountGiver.cs" />
     <Compile Include="UiBindings\IDisplayStringAdaptor.cs" />
     <Compile Include="UsbDrive\UsbDriveInfo.cs" />
+    <Compile Include="UsbDrive\Mac\UsbDriveInfoMac.cs" />
     <Compile Include="IO\FileRelatedStrings.Designer.cs">
       <DependentUpon>FileRelatedStrings.resx</DependentUpon>
       <DesignTime>True</DesignTime>
