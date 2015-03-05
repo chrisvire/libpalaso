@@ -19,6 +19,10 @@ namespace Palaso
 	{
 		public PalasoSetup()
 		{
+#if __MonoCS__
+			if (Palaso.PlatformUtilities.Platform.IsMac)
+				MonoMac.AppKit.NSApplication.Init();
+#endif
 		}
 		private bool disposed = false;
 
@@ -40,7 +44,8 @@ namespace Palaso
 				// program hang when closing.  Closing the system bus allows the thread to close,
 				// and thus the program to close.  Closing the system bus can happen safely only
 				// at the end of the program.
-				NDesk.DBus.Bus.System.Close();
+				if (Palaso.PlatformUtilities.Platform.IsLinux)
+					NDesk.DBus.Bus.System.Close();
 #endif
 			}
 			disposed = true;
