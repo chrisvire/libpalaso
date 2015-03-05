@@ -266,6 +266,9 @@
     <None Include="..\lib\commonMono\NDesk.DBus.dll.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Reference Include="MonoMac">
+      <HintPath>..\lib\commonMono\MonoMac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Progress\LogBoxSettings.settings">
@@ -465,6 +468,8 @@
     <Compile Include="Keyboarding\Linux\XkbKeyboardDescription.cs" />
     <Compile Include="Keyboarding\Linux\XklConfigRegistry.cs" />
     <Compile Include="Keyboarding\Linux\XklEngine.cs" />
+    <Compile Include="Keyboarding\Mac\MacKeyboardDescription.cs" />
+    <Compile Include="Keyboarding\Mac\MacKeyboardAdaptor.cs" />
     <Compile Include="Keyboarding\Types\InputLanguageWrapper.cs" />
     <Compile Include="Keyboarding\Types\KeyboardCollection.cs" />
     <Compile Include="Keyboarding\Types\MouseEvent.cs" />

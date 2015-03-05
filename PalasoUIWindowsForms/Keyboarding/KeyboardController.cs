@@ -13,6 +13,7 @@ using Palaso.UI.WindowsForms.Keyboarding.Interfaces;
 using Palaso.UI.WindowsForms.Keyboarding.InternalInterfaces;
 #if __MonoCS__
 using Palaso.UI.WindowsForms.Keyboarding.Linux;
+using Palaso.UI.WindowsForms.Keyboarding.Mac;
 #else
 using Palaso.UI.WindowsForms.Keyboarding.Windows;
 #endif
@@ -63,14 +64,18 @@ namespace Palaso.UI.WindowsForms.Keyboarding
 			/// </summary>
 			public static void Reset()
 			{
-				SetKeyboardAdaptors(new IKeyboardAdaptor[] {
+				SetKeyboardAdaptors(
 #if __MonoCS__
-					new XkbKeyboardAdaptor(), new IbusKeyboardAdaptor(), new CombinedKeyboardAdaptor(),
-					new CinnamonIbusAdaptor()
+					(Palaso.PlatformUtilities.Platform.IsMac
+					? new IKeyboardAdaptor[] { new MacKeyboardAdaptor() }
+
+					: new IKeyboardAdaptor[] { new XkbKeyboardAdaptor(), new IbusKeyboardAdaptor(),
+					  new CombinedKeyboardAdaptor(), new CinnamonIbusAdaptor() }
+					)
 #else
-					new WinKeyboardAdaptor(), new KeymanKeyboardAdaptor(),
+					new IKeyboardAdaptor[] {new WinKeyboardAdaptor(), new KeymanKeyboardAdaptor() }
 #endif
-				});
+				);
 			}
 
 			public static void InitializeAdaptors()
